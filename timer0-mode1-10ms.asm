@@ -1,0 +1,15 @@
+;---10ms delay, 50%  duty cycle sq wave---
+ORG 0000H
+	MOV TMOD, #01H
+HERE: MOV TH0, #0DBH
+	  MOV TL0, #0FFH	
+	  CPL P1.5
+	  LCALL DELAY
+	  SJMP HERE
+	
+	DELAY: SETB TR0
+	AGAIN: JNB TF0, AGAIN
+	CLR TR0
+	CLR TF0
+	RET
+END

@@ -1,0 +1,8 @@
+; add two 16-bit nums, FC45H and 02ECH
+CLR C
+MOV A, #45H
+ADD A, #0ECH
+MOV R0, A
+MOV A, #02H
+ADD A, #0FCH
+MOV R1, A
