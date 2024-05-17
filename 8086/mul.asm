@@ -1,0 +1,18 @@
+data SEGMENT
+num DW 1234H, 1234H
+prod DW 2 DUP(0)
+data ENDS
+
+code SEGMENT
+ASSUME CS:CODE, DS:data
+START: MOV AX, data
+MOV DS, AX
+LEA SI, num
+MOV AX, [SI]
+MOV BX, [SI+2]
+MUL BX
+MOV prod, AX
+MOV prod+2, DX
+HLT
+code ENDS
+END START
