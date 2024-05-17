@@ -1,0 +1,11 @@
+;---transfer 'Y' serially at 9600 baud rate----
+MOV TMOD, #20H
+MOV SCON, #50H
+MOV TH1, #-3 ;9600 BAUD RATE
+SETB TR1
+AGAIN: MOV SBUF, #'Y'
+HERE: JNB TI, HERE
+CLR TI
+CLR TF1
+SJMP AGAIN
+END
